@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Currency Converter</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f2f2f2;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+    .welcome-text {
+      color: white;
+      margin: 0;
+      font-size: 24px;
+    }
+    .logout-button {
+      color: white;
+      text-decoration: none;
+      background-color: #551a8b;
+      padding: 10px 20px;
+      border-radius: 4px;
+    }
+    .logout-button:hover {
+      background-color: #773dbb;
+    }
+    .logout-button:active {
+      background-color: #440b5f;
+    }
+    .form-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .form-container label {
+      margin-right: 10px;
+      font-weight: bold;
+    }
+    .form-container select {
+      width: 120px;
+      margin-right: 10px;
+      padding: 6px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    .form-container input {
+      margin-right: 10px;
+    }
+    .form-container button {
+      padding: 8px 16px;
+      border-radius: 4px;
+      background-color: #551a8b;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .form-container button:hover {
+      background-color: #773dbb;
+    }
+    .form-container button:active {
+      background-color: #440b5f;
+    }
+    .result-message {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+    footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
+  footer div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  footer a {
+    color: white;
+    text-decoration: none;
+  }
+  footer a:hover {
+    text-decoration: underline;
+  }
+  footer i {
+    margin-right: 5px;
+  }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1 class="welcome-text">Welcome, <%= username %></h1>
+    <a class="logout-button" href="/logout">Logout</a>
+  </div>
+  <h2>Search Currency:</h2>
+  <form action="/searchCurrency" method="post">
+    <div class="form-container">
+      <div>
+        <label for="multiplier">Multiplier:</label>
+        <input type="number" id="multiplier" name="multiplier" min="0" step="any" >
+      </div>
+      <div>
+        <label for="baseCurrency">Base Currency:</label>
+        <select id="baseCurrency" name="baseCurrency">
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+          <option value="JPY">JPY</option>
+          <option value="BGN">BGN</option>
+          <option value="CZK">CZK</option>
+          <option value="DKK">DKK</option>
+          <option value="GBP">GBP</option>
+          <option value="HUF">HUF</option>
+          <option value="PLN">PLN</option>
+          <option value="RON">RON</option>
+          <option value="SEK">SEK</option>
+          <option value="CHF">CHF</option>
+          <option value="ISK">ISK</option>
+          <option value="NOK">NOK</option>
+          <option value="HRK">HRK</option>
+          <option value="RUB">RUB</option>
+          <option value="TRY">TRY</option>
+          <option value="AUD">AUD</option>
+          <option value="BRL">BRL</option>
+          <option value="CAD">CAD</option>
+          <option value="CNY">CNY</option>
+          <option value="HKD">HKD</option>
+          <option value="IDR">IDR</option>
+          <option value="ILS">ILS</option>
+          <option value="INR">INR</option>
+          <option value="KRW">KRW</option>
+          <option value="MXN">MXN</option>
+          <option value="MYR">MYR</option>
+          <option value="NZD">NZD</option>
+          <option value="PHP">PHP</option>
+          <option value="SGD">SGD</option>
+          <option value="THB">THB</option>
+          <option value="ZAR">ZAR</option>
+          <option value="ARS">ARS</option>
+          <option value="DZD">DZD</option>
+          <option value="MAD">MAD</option>
+          <option value="TWD">TWD</option>
+          <option value="BTC">BTC</option>
+          <option value="ETH">ETH</option>
+          <option value="BNB">BNB</option>
+          <option value="DOGE">DOGE</option>
+          <option value="XRP">XRP</option>
+          <option value="BCH">BCH</option>
+          <option value="LTC">LTC</option> 
+        </select>
+      </div>
+      <div>
+        <label for="targetCurrency">Target Currency:</label>
+        <select id="targetCurrency" name="targetCurrency">
+          <option value="INR">INR</option>
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+          <option value="JPY">JPY</option>
+          <option value="BGN">BGN</option>
+          <option value="CZK">CZK</option>
+          <option value="DKK">DKK</option>
+          <option value="GBP">GBP</option>
+          <option value="HUF">HUF</option>
+          <option value="PLN">PLN</option>
+          <option value="RON">RON</option>
+          <option value="SEK">SEK</option>
+          <option value="CHF">CHF</option>
+          <option value="ISK">ISK</option>
+          <option value="NOK">NOK</option>
+          <option value="HRK">HRK</option>
+          <option value="RUB">RUB</option>
+          <option value="TRY">TRY</option>
+          <option value="AUD">AUD</option>
+          <option value="BRL">BRL</option>
+          <option value="CAD">CAD</option>
+          <option value="CNY">CNY</option>
+          <option value="HKD">HKD</option>
+          <option value="IDR">IDR</option>
+          <option value="ILS">ILS</option>
+          <option value="KRW">KRW</option>
+          <option value="MXN">MXN</option>
+          <option value="MYR">MYR</option>
+          <option value="NZD">NZD</option>
+          <option value="PHP">PHP</option>
+          <option value="SGD">SGD</option>
+          <option value="THB">THB</option>
+          <option value="ZAR">ZAR</option>
+          <option value="ARS">ARS</option>
+          <option value="DZD">DZD</option>
+          <option value="MAD">MAD</option>
+          <option value="TWD">TWD</option>
+          <option value="BTC">BTC</option>
+          <option value="ETH">ETH</option>
+          <option value="BNB">BNB</option>
+          <option value="DOGE">DOGE</option>
+          <option value="XRP">XRP</option>
+          <option value="BCH">BCH</option>
+          <option value="LTC">LTC</option>
+        </select>
+      </div>
+      <button type="submit">Convert</button>
+    </div>
+  </form>
+
+  <% if (message) { %>
+    <p class="result-message">The result is: <%= multiplier %> <%= baseCurrency %> is equal to <b><%=message %></b> <%= targetCurrency %></p>
+  <% } %>
+  <div class="currency-info">
+    <h3>Currency Codes, Symbols, and Full Forms:</h3>
+    <ul>
+      <li>USD - &#36; (Dollar) - United States Dollar</li>
+      <li>EUR - &euro; (Euro) - Euro</li>
+      <li>JPY - &yen; (Yen) - Japanese Yen</li>
+      <li>BGN - (Bulgarian Lev) - Bulgarian Lev</li>
+      <li>CZK - (Czech Koruna) - Czech Koruna</li>
+      <li>DKK - (Danish Krone) - Danish Krone</li>
+      <li>GBP - &#163; (Pound Sterling) - Pound Sterling</li>
+      <li>HUF - (Hungarian Forint) - Hungarian Forint</li>
+      <li>PLN - (Polish Zloty) - Polish Zloty</li>
+      <li>RON - (Romanian Leu) - Romanian Leu</li>
+      <li>SEK - (Swedish Krona) - Swedish Krona</li>
+      <li>CHF - (Swiss Franc) - Swiss Franc</li>
+      <li>ISK - (Icelandic Krona) - Icelandic Krona</li>
+      <li>NOK - (Norwegian Krone) - Norwegian Krone</li>
+      <li>HRK - (Croatian Kuna) - Croatian Kuna</li>
+      <li>RUB - (Russian Ruble) - Russian Ruble</li>
+      <li>TRY - (Turkish Lira) - Turkish Lira</li>
+      <li>AUD - &#36; (Australian Dollar) - Australian Dollar</li>
+      <li>BRL - (Brazilian Real) - Brazilian Real</li>
+      <li>CAD - &#36; (Canadian Dollar) - Canadian Dollar</li>
+      <li>CNY - &#165; (Chinese Yuan) - Chinese Yuan</li>
+      <li>HKD - &#36; (Hong Kong Dollar) - Hong Kong Dollar</li>
+      <li>IDR - (Indonesian Rupiah) - Indonesian Rupiah</li>
+      <li>ILS - &#8362; (Israeli Shekel) - Israeli Shekel</li>
+      <li>INR - &#8377; (Indian Rupee) - Indian Rupee</li>
+      <li>KRW - &#8361; (South Korean Won) - South Korean Won</li>
+      <li>MXN - &#36; (Mexican Peso) - Mexican Peso</li>
+      <li>MYR - (Malaysian Ringgit) - Malaysian Ringgit</li>
+      <li>NZD - &#36; (New Zealand Dollar) - New Zealand Dollar</li>
+      <li>PHP - (Philippine Peso) - Philippine Peso</li>
+      <li>SGD - &#36; (Singapore Dollar) - Singapore Dollar</li>
+      <li>THB - &#3647; (Thai Baht) - Thai Baht</li>
+      <li>ZAR - (South African Rand) - South African Rand</li>
+      <li>ARS - (Argentine Peso) - Argentine Peso</li>
+      <li>DZD - (Algerian Dinar) - Algerian Dinar</li>
+      <li>MAD - (Moroccan Dirham) - Moroccan Dirham</li>
+      <li>TWD - (New Taiwan Dollar) - New Taiwan Dollar</li>
+      <li>BTC - (Bitcoin) - Bitcoin</li>
+      <li>ETH - (Ethereum) - Ethereum</li>
+      <li>BNB - (Binance Coin) - Binance Coin</li>
+      <li>DOGE - (Dogecoin) - Dogecoin</li>
+      <li>XRP - (XRP) - XRP</li>
+      <li>BCH - (Bitcoin Cash) - Bitcoin Cash</li>
+      <li>LTC - (Litecoin) - Litecoin</li>
+    </ul>
+  </div>
+  <footer>
+    Contact Us:
+    <div>
+      <a href="mailto:21pa1a04a2@gmail.com" target="_blank"><i class="fas fa-envelope"></i>Email</a>
+      <a href="https://instagram.com/04.utkarsh?utm_source=qr&igshid=MzNlNGNkZWQ4Mg%3D%3D" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+      <a href="https://twitter.com/imutk004?t=Kn9mSadUSm6zJd44iGX47g&s=09" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+    </div>
+  </footer>
+
+</body>
+</html>
