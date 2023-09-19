@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Currency Converter</title>
+  <title>HistoCAL</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
   <style>
-    body {
+body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 20px;
-      background-color: #f2f2f2;
+      background-color: #111;
+      color: #fff;
     }
+    
     .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: #333;
+      background-color: #242323;
       padding: 10px;
       margin-bottom: 20px;
     }
     .welcome-text {
-      color: white;
+      color:#0cf03a;
       margin: 0;
       font-size: 24px;
     }
     .logout-button {
-      color: white;
+      color: #fff;
       text-decoration: none;
       background-color: #551a8b;
       padding: 10px 20px;
@@ -36,12 +38,31 @@
     .logout-button:active {
       background-color: #440b5f;
     }
+    .result-container {
+      background-color: #222;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      margin-top: 20px; 
+    }
+    .result-container h2 {
+      font-size: 24px;
+    }
+    .conversion-result {
+      color: #fff;
+      font-size: 16px;
+      margin-bottom: 10px; 
+    }
     .form-container {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
       margin-bottom: 20px;
+      background-color: #222;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     }
     .form-container label {
       margin-right: 10px;
@@ -52,10 +73,17 @@
       margin-right: 10px;
       padding: 6px;
       border-radius: 4px;
-      border: 1px solid #ccc;
+      border: 1px solid #555;
+      background-color: #444;
+      color: #fff;
     }
     .form-container input {
       margin-right: 10px;
+      padding: 6px;
+      border-radius: 4px;
+      border: 1px solid #555;
+      background-color: #444;
+      color: #fff;
     }
     .form-container button {
       padding: 8px 16px;
@@ -75,34 +103,50 @@
       font-size: 18px;
       margin-top: 20px;
     }
+    .currency-info {
+      background-color: #222;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    }
+    .currency-info ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .currency-info li {
+      margin-bottom: 5px;
+    }
     footer {
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    text-align: center;
-  }
-  footer div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-top: 10px;
-  }
-  footer a {
-    color: white;
-    text-decoration: none;
-  }
-  footer a:hover {
-    text-decoration: underline;
-  }
-  footer i {
-    margin-right: 5px;
-  }
+      background-color: #111;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+    footer div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    footer a {
+      color: white;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    footer i {
+      margin-right: 5px;
+    }
+    h2{
+      color:#0cf03a;
+    }
   </style>
 </head>
 <body>
   <div class="header">
-    <h1 class="welcome-text">Welcome, <%= username %></h1>
+    <h1 class="welcome-text">Welcome, <span style="color: red;"> <%= username %> </span> </h1>
     <a class="logout-button" href="/logout">Logout</a>
   </div>
   <h2>Search Currency:</h2>
@@ -110,11 +154,11 @@
     <div class="form-container">
       <div>
         <label for="multiplier">Multiplier:</label>
-        <input type="number" id="multiplier" name="multiplier" min="0" step="any" >
+        <input type="number" id="multiplier" name="multiplier" min="0" step="any" required>
       </div>
       <div>
         <label for="baseCurrency">Base Currency:</label>
-        <select id="baseCurrency" name="baseCurrency">
+        <select id="baseCurrency" name="baseCurrency" required>
           <option value="USD">USD</option>
           <option value="EUR">EUR</option>
           <option value="JPY">JPY</option>
@@ -148,25 +192,14 @@
           <option value="SGD">SGD</option>
           <option value="THB">THB</option>
           <option value="ZAR">ZAR</option>
-          <option value="ARS">ARS</option>
-          <option value="DZD">DZD</option>
-          <option value="MAD">MAD</option>
-          <option value="TWD">TWD</option>
-          <option value="BTC">BTC</option>
-          <option value="ETH">ETH</option>
-          <option value="BNB">BNB</option>
-          <option value="DOGE">DOGE</option>
-          <option value="XRP">XRP</option>
-          <option value="BCH">BCH</option>
-          <option value="LTC">LTC</option> 
         </select>
       </div>
       <div>
         <label for="targetCurrency">Target Currency:</label>
-        <select id="targetCurrency" name="targetCurrency">
+        <select id="targetCurrency" name="targetCurrency" required>
           <option value="INR">INR</option>
-          <option value="USD">USD</option>
           <option value="EUR">EUR</option>
+          <option value="USD">USD</option>
           <option value="JPY">JPY</option>
           <option value="BGN">BGN</option>
           <option value="CZK">CZK</option>
@@ -197,28 +230,33 @@
           <option value="SGD">SGD</option>
           <option value="THB">THB</option>
           <option value="ZAR">ZAR</option>
-          <option value="ARS">ARS</option>
-          <option value="DZD">DZD</option>
-          <option value="MAD">MAD</option>
-          <option value="TWD">TWD</option>
-          <option value="BTC">BTC</option>
-          <option value="ETH">ETH</option>
-          <option value="BNB">BNB</option>
-          <option value="DOGE">DOGE</option>
-          <option value="XRP">XRP</option>
-          <option value="BCH">BCH</option>
-          <option value="LTC">LTC</option>
         </select>
       </div>
+      <div>
+        <label for="fromDate">From:</label>
+        <input type="date" name="fromDate" id="fromDate" required>
+      </div>
+      <div>
+        <label for="toDate">To:</label>
+        <input type="date" name="toDate" id="toDate" required>
+      </div>
+      
       <button type="submit">Convert</button>
     </div>
   </form>
 
-  <% if (message) { %>
-    <p class="result-message">The result is: <%= multiplier %> <%= baseCurrency %> is equal to <b><%=message %></b> <%= targetCurrency %></p>
-  <% } %>
+  <div class="result-container">
+    <% if(message) { %>
+    <h2>Currency Conversion Results:  </h2>
+    <% Object.keys(data).forEach(date => { %>
+      <p class="conversion-result">
+        On <%= date %>, <%= multiplier %> <%= baseCurrency %> is equal to <%= data[date] %> <%= targetCurrency %>
+      </p>
+    <% }) %>
+  </div>
+ <% } %>
   <div class="currency-info">
-    <h3>Currency Codes, Symbols, and Full Forms:</h3>
+    <h2>Currency Codes, Symbols, and Full Forms:</h2>
     <ul>
       <li>USD - &#36; (Dollar) - United States Dollar</li>
       <li>EUR - &euro; (Euro) - Euro</li>
@@ -253,17 +291,6 @@
       <li>SGD - &#36; (Singapore Dollar) - Singapore Dollar</li>
       <li>THB - &#3647; (Thai Baht) - Thai Baht</li>
       <li>ZAR - (South African Rand) - South African Rand</li>
-      <li>ARS - (Argentine Peso) - Argentine Peso</li>
-      <li>DZD - (Algerian Dinar) - Algerian Dinar</li>
-      <li>MAD - (Moroccan Dirham) - Moroccan Dirham</li>
-      <li>TWD - (New Taiwan Dollar) - New Taiwan Dollar</li>
-      <li>BTC - (Bitcoin) - Bitcoin</li>
-      <li>ETH - (Ethereum) - Ethereum</li>
-      <li>BNB - (Binance Coin) - Binance Coin</li>
-      <li>DOGE - (Dogecoin) - Dogecoin</li>
-      <li>XRP - (XRP) - XRP</li>
-      <li>BCH - (Bitcoin Cash) - Bitcoin Cash</li>
-      <li>LTC - (Litecoin) - Litecoin</li>
     </ul>
   </div>
   <footer>
@@ -276,4 +303,14 @@
   </footer>
 
 </body>
+<script>
+  var today=new Date();
+  var yesterday =new Date(today);
+  yesterday.setDate(today.getDate()-1);
+
+  var formattedYesterday=yesterday.toISOString().split('T')[0];
+
+  document.getElementById('fromDate').max =formattedYesterday;
+  document.getElementById('toDate').max =formattedYesterday;
+</script>
 </html>
