@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const { initializeApp, cert } = require('firebase-admin/app');
 const { getFirestore } = require('firebase-admin/firestore');
 const axios = require('axios');
+const bcrypt = require('bcrypt')
 
 var serviceAccount = require("./db.json");
 
@@ -35,54 +36,71 @@ app.get('/login', function (req, res) {
 })
 
 
-  app.post('/onSignup', function (req, res) {
-    const data = req.body;
-    const email = req.body.email;
-    console.log(data)
-    db.collection('userData').where("email", "==", email).get()
-      .then(querySnapshot => {
-        if (!querySnapshot.empty) {
-          res.render('signup', { message: "Email already exists. Please choose a different email." });
-        } 
-        else {
-          db.collection('userData').add(data)
-            .then(() => {
-              res.render('signup', { message: "Successfully signed up!" });
-            })
-            .catch(error => {
-              console.error("Error adding data:", error);
-              res.render('signup', { message: "An error occurred while signing up." });
-            });
-        }
-      })
-      .catch(error => {
-        console.error("Error adding data:", error);
-        res.render('signup', { message: "An error occurred while signing up." });
-      });
-  });
+app.post('/onSignup', function (req, res) {
+  const data = req.body;
+  const email = req.body.email;
+  const password = req.body.password;
+  bcrypt.hash(password, 10, (err, hashedPassword) => {
+    if (err) {
+      console.error("Error hashing password:", err);
+      res.render('signup', { message: "An error occurred while signing up." });
+    }
+    else {
+      data.password = hashedPassword;
 
-  app.post('/dashboard', function (req, res) {
-    const email = req.body.email;
-    const password = req.body.password;
-    db.collection('userData').where("email", "==", email).where("password", "==", password).get()
-      .then(querySnapshot => {
-        if (!querySnapshot.empty) {
-          const data = querySnapshot.docs[0].data();
-          const name = data.name;
-          req.session.username = name;
-          res.set('Cache-Control', 'no-store');
-          res.render('dashboard', { username: name,message:null});
-        }
-        else {
-          res.render('login', { message: "Invalid email or password!" });
-        }
-      })
-      .catch(error => {
-        console.error("Error checking login:", error);
-        res.render('login', { message: "An error occurred while checking login." });
-      });
+      db.collection('userData').where("email", "==", email).get()
+        .then(querySnapshot => {
+          if (!querySnapshot.empty) {
+            res.render('signup', { message: "Email already exists. Please choose a different email." });
+          }
+          else {
+            db.collection('userData').add(data)
+              .then(() => {
+                res.render('signup', { message: "Successfully signed up!" });
+              })
+              .catch(error => {
+                console.error("Error adding data:", error);
+                res.render('signup', { message: "An error occurred while signing up." });
+              });
+          }
+        })
+        .catch(error => {
+          console.error("Error adding data:", error);
+          res.render('signup', { message: "An error occurred while signing up." });
+        });
+    }
   });
+});
 
+app.post('/dashboard', function (req, res) {
+  const email = req.body.email;
+  const password = req.body.password;
+  db.collection('userData').where("email", "==", email).get()
+    .then(querySnapshot => {
+      if (!querySnapshot.empty) {
+        const data = querySnapshot.docs[0].data();
+        const hashedPassword = data.password;
+        bcrypt.compare(password, hashedPassword, (err, result) => {
+          if (result) {
+            const name = data.name;
+            req.session.username = name;
+            res.set('Cache-Control', 'no-store');            
+            res.render('dashboard', { username: name, message: null});
+          }
+          else {
+            res.render('login', { message: "Invalid email or password!"});
+          }
+        });
+      }
+      else {
+        res.render('login', { message: "Invalid email or password!" });
+      }
+    })
+    .catch(error => {
+      console.error("Error checking login:", error);
+      res.render('login', { message: "An error occurred while checking login."});
+    });
+});
   app.post('/searchCurrency', function (req, res) {
     const baseCurrency = req.body.baseCurrency;
     const targetCurrency = req.body.targetCurrency;
@@ -107,7 +125,8 @@ app.get('/login', function (req, res) {
                 const convertedValue = (multiplier * exchangeRate).toFixed(2);
                 convertedData[date] = convertedValue;
             });
-            console.log(convertedData)
+            console.log(convertedData);
+            res.set('Cache-Control', 'no-store');
             res.render('dashboard', { username: name, targetCurrency: targetCurrency, baseCurrency: baseCurrency, multiplier: multiplier, data: convertedData, message: true});
         })
         .catch(error => {
@@ -124,6 +143,7 @@ app.get('/logout', function (req, res) {
       res.send("Error");
     }
     else{
+      res.set('Cache-Control', 'no-store');
       res.render('login', { message: "Logged out Successfully" });
     }
   })
