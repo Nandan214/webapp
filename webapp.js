@@ -1,14 +1,10 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 const session = require('express-session');
 const bodyParser = require('body-parser');
-var serviceAccount = require("./db.json");
 
-initializeApp({
-  credential: cert(serviceAccount)
-});
 
-const db = getFirestore();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
@@ -20,6 +16,9 @@ app.set('view engine', 'ejs');
 
 
 app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'public', 'welcome.html'));
+})
+app.get('/dashboard', function (req, res) {
   res.render('dashboard', { message: null });
 })
 
