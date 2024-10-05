@@ -14,16 +14,21 @@ body {
     
     .header {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       background-color: #242323;
       padding: 10px;
       margin-bottom: 20px;
+      text-align: center;
     }
     .welcome-text {
       color:#0cf03a;
       margin: 0;
       font-size: 24px;
+      display:flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
     }
     .logout-button {
       color: #fff;
@@ -146,91 +151,367 @@ body {
 </head>
 <body>
   <div class="header">
-    <h1 class="welcome-text">Welcome, <span style="color: red;"> <%= username %> </span> </h1>
-    <a class="logout-button" href="/logout">Logout</a>
+    <h1 class="welcome-text">Welcome to HistoCAL</h1>
   </div>
   <h2>Search Currency:</h2>
   <form action="/searchCurrency" method="post">
     <div class="form-container">
       <div>
         <label for="multiplier">Multiplier:</label>
-        <input type="number" id="multiplier" name="multiplier" min="0" step="any" required>
+        <input type="number" id="multiplier" name="multiplier" min="0" step="any" value="1" required>
       </div>
       <div>
         <label for="baseCurrency">Base Currency:</label>
         <select id="baseCurrency" name="baseCurrency" required>
-          <option value="USD">USD</option>
-          <option value="EUR">EUR</option>
-          <option value="JPY">JPY</option>
-          <option value="BGN">BGN</option>
-          <option value="CZK">CZK</option>
-          <option value="DKK">DKK</option>
-          <option value="GBP">GBP</option>
-          <option value="HUF">HUF</option>
-          <option value="PLN">PLN</option>
-          <option value="RON">RON</option>
-          <option value="SEK">SEK</option>
-          <option value="CHF">CHF</option>
-          <option value="ISK">ISK</option>
-          <option value="NOK">NOK</option>
-          <option value="HRK">HRK</option>
-          <option value="RUB">RUB</option>
-          <option value="TRY">TRY</option>
+          <option value="AED">AED</option>
+          <option value="AFN">AFN</option>
+          <option value="ALL">ALL</option>
+          <option value="AMD">AMD</option>
+          <option value="ANG">ANG</option>
+          <option value="AOA">AOA</option>
+          <option value="ARS">ARS</option>
           <option value="AUD">AUD</option>
+          <option value="AWG">AWG</option>
+          <option value="AZN">AZN</option>
+          <option value="BAM">BAM</option>
+          <option value="BBD">BBD</option>
+          <option value="BDT">BDT</option>
+          <option value="BGN">BGN</option>
+          <option value="BHD">BHD</option>
+          <option value="BIF">BIF</option>
+          <option value="BMD">BMD</option>
+          <option value="BND">BND</option>
+          <option value="BOB">BOB</option>
           <option value="BRL">BRL</option>
+          <option value="BSD">BSD</option>
+          <option value="BTC">BTC</option>
+          <option value="BTN">BTN</option>
+          <option value="BWP">BWP</option>
+          <option value="BYN">BYN</option>
+          <option value="BYR">BYR</option>
+          <option value="BZD">BZD</option>
           <option value="CAD">CAD</option>
+          <option value="CDF">CDF</option>
+          <option value="CHF">CHF</option>
+          <option value="CLF">CLF</option>
+          <option value="CLP">CLP</option>
+          <option value="CNH">CNH</option>
           <option value="CNY">CNY</option>
+          <option value="COP">COP</option>
+          <option value="CRC">CRC</option>
+          <option value="CUC">CUC</option>
+          <option value="CUP">CUP</option>
+          <option value="CVE">CVE</option>
+          <option value="CZK">CZK</option>
+          <option value="DJF">DJF</option>
+          <option value="DKK">DKK</option>
+          <option value="DOP">DOP</option>
+          <option value="DZD">DZD</option>
+          <option value="EGP">EGP</option>
+          <option value="ERN">ERN</option>
+          <option value="ETB">ETB</option>
+          <option value="EUR">EUR</option>
+          <option value="FJD">FJD</option>
+          <option value="FKP">FKP</option>
+          <option value="GBP">GBP</option>
+          <option value="GEL">GEL</option>
+          <option value="GGP">GGP</option>
+          <option value="GHS">GHS</option>
+          <option value="GIP">GIP</option>
+          <option value="GMD">GMD</option>
+          <option value="GNF">GNF</option>
+          <option value="GTQ">GTQ</option>
+          <option value="GYD">GYD</option>
           <option value="HKD">HKD</option>
+          <option value="HNL">HNL</option>
+          <option value="HRK">HRK</option>
+          <option value="HTG">HTG</option>
+          <option value="HUF">HUF</option>
           <option value="IDR">IDR</option>
           <option value="ILS">ILS</option>
+          <option value="IMP">IMP</option>
           <option value="INR">INR</option>
+          <option value="IQD">IQD</option>
+          <option value="IRR">IRR</option>
+          <option value="ISK">ISK</option>
+          <option value="JEP">JEP</option>
+          <option value="JMD">JMD</option>
+          <option value="JOD">JOD</option>
+          <option value="JPY">JPY</option>
+          <option value="KES">KES</option>
+          <option value="KGS">KGS</option>
+          <option value="KHR">KHR</option>
+          <option value="KMF">KMF</option>
+          <option value="KPW">KPW</option>
           <option value="KRW">KRW</option>
+          <option value="KWD">KWD</option>
+          <option value="KYD">KYD</option>
+          <option value="KZT">KZT</option>
+          <option value="LAK">LAK</option>
+          <option value="LBP">LBP</option>
+          <option value="LKR">LKR</option>
+          <option value="LRD">LRD</option>
+          <option value="LSL">LSL</option>
+          <option value="LTL">LTL</option>
+          <option value="LVL">LVL</option>
+          <option value="LYD">LYD</option>
+          <option value="MAD">MAD</option>
+          <option value="MDL">MDL</option>
+          <option value="MGA">MGA</option>
+          <option value="MKD">MKD</option>
+          <option value="MMK">MMK</option>
+          <option value="MNT">MNT</option>
+          <option value="MOP">MOP</option>
+          <option value="MRU">MRU</option>
+          <option value="MUR">MUR</option>
+          <option value="MVR">MVR</option>
+          <option value="MWK">MWK</option>
           <option value="MXN">MXN</option>
           <option value="MYR">MYR</option>
+          <option value="MZN">MZN</option>
+          <option value="NAD">NAD</option>
+          <option value="NGN">NGN</option>
+          <option value="NIO">NIO</option>
+          <option value="NOK">NOK</option>
+          <option value="NPR">NPR</option>
           <option value="NZD">NZD</option>
+          <option value="OMR">OMR</option>
+          <option value="PAB">PAB</option>
+          <option value="PEN">PEN</option>
+          <option value="PGK">PGK</option>
           <option value="PHP">PHP</option>
+          <option value="PKR">PKR</option>
+          <option value="PLN">PLN</option>
+          <option value="PYG">PYG</option>
+          <option value="QAR">QAR</option>
+          <option value="RON">RON</option>
+          <option value="RSD">RSD</option>
+          <option value="RUB">RUB</option>
+          <option value="RWF">RWF</option>
+          <option value="SAR">SAR</option>
+          <option value="SBD">SBD</option>
+          <option value="SCR">SCR</option>
+          <option value="SDG">SDG</option>
+          <option value="SEK">SEK</option>
           <option value="SGD">SGD</option>
+          <option value="SHP">SHP</option>
+          <option value="SLE">SLE</option>
+          <option value="SLL">SLL</option>
+          <option value="SOS">SOS</option>
+          <option value="SRD">SRD</option>
+          <option value="STD">STD</option>
+          <option value="SVC">SVC</option>
+          <option value="SYP">SYP</option>
+          <option value="SZL">SZL</option>
           <option value="THB">THB</option>
+          <option value="TJS">TJS</option>
+          <option value="TMT">TMT</option>
+          <option value="TND">TND</option>
+          <option value="TOP">TOP</option>
+          <option value="TRY">TRY</option>
+          <option value="TTD">TTD</option>
+          <option value="TWD">TWD</option>
+          <option value="TZS">TZS</option>
+          <option value="UAH">UAH</option>
+          <option value="UGX">UGX</option>
+          <option value="USD">USD</option>
+          <option value="UYU">UYU</option>
+          <option value="UZS">UZS</option>
+          <option value="VEF">VEF</option>
+          <option value="VES">VES</option>
+          <option value="VND">VND</option>
+          <option value="VUV">VUV</option>
+          <option value="WST">WST</option>
+          <option value="XAF">XAF</option>
+          <option value="XAG">XAG</option>
+          <option value="XAU">XAU</option>
+          <option value="XCD">XCD</option>
+          <option value="XDR">XDR</option>
+          <option value="XOF">XOF</option>
+          <option value="XPF">XPF</option>
+          <option value="YER">YER</option>
           <option value="ZAR">ZAR</option>
-        </select>
+          <option value="ZMK">ZMK</option>
+          <option value="ZMW">ZMW</option>
+          <option value="ZWL">ZWL</option>
+      </select>
+      
       </div>
       <div>
         <label for="targetCurrency">Target Currency:</label>
         <select id="targetCurrency" name="targetCurrency" required>
-          <option value="INR">INR</option>
-          <option value="EUR">EUR</option>
-          <option value="USD">USD</option>
-          <option value="JPY">JPY</option>
-          <option value="BGN">BGN</option>
-          <option value="CZK">CZK</option>
-          <option value="DKK">DKK</option>
-          <option value="GBP">GBP</option>
-          <option value="HUF">HUF</option>
-          <option value="PLN">PLN</option>
-          <option value="RON">RON</option>
-          <option value="SEK">SEK</option>
-          <option value="CHF">CHF</option>
-          <option value="ISK">ISK</option>
-          <option value="NOK">NOK</option>
-          <option value="HRK">HRK</option>
-          <option value="RUB">RUB</option>
-          <option value="TRY">TRY</option>
+          <option value="AED">AED</option>
+          <option value="AFN">AFN</option>
+          <option value="ALL">ALL</option>
+          <option value="AMD">AMD</option>
+          <option value="ANG">ANG</option>
+          <option value="AOA">AOA</option>
+          <option value="ARS">ARS</option>
           <option value="AUD">AUD</option>
+          <option value="AWG">AWG</option>
+          <option value="AZN">AZN</option>
+          <option value="BAM">BAM</option>
+          <option value="BBD">BBD</option>
+          <option value="BDT">BDT</option>
+          <option value="BGN">BGN</option>
+          <option value="BHD">BHD</option>
+          <option value="BIF">BIF</option>
+          <option value="BMD">BMD</option>
+          <option value="BND">BND</option>
+          <option value="BOB">BOB</option>
           <option value="BRL">BRL</option>
+          <option value="BSD">BSD</option>
+          <option value="BTC">BTC</option>
+          <option value="BTN">BTN</option>
+          <option value="BWP">BWP</option>
+          <option value="BYN">BYN</option>
+          <option value="BYR">BYR</option>
+          <option value="BZD">BZD</option>
           <option value="CAD">CAD</option>
+          <option value="CDF">CDF</option>
+          <option value="CHF">CHF</option>
+          <option value="CLF">CLF</option>
+          <option value="CLP">CLP</option>
+          <option value="CNH">CNH</option>
           <option value="CNY">CNY</option>
+          <option value="COP">COP</option>
+          <option value="CRC">CRC</option>
+          <option value="CUC">CUC</option>
+          <option value="CUP">CUP</option>
+          <option value="CVE">CVE</option>
+          <option value="CZK">CZK</option>
+          <option value="DJF">DJF</option>
+          <option value="DKK">DKK</option>
+          <option value="DOP">DOP</option>
+          <option value="DZD">DZD</option>
+          <option value="EGP">EGP</option>
+          <option value="ERN">ERN</option>
+          <option value="ETB">ETB</option>
+          <option value="EUR">EUR</option>
+          <option value="FJD">FJD</option>
+          <option value="FKP">FKP</option>
+          <option value="GBP">GBP</option>
+          <option value="GEL">GEL</option>
+          <option value="GGP">GGP</option>
+          <option value="GHS">GHS</option>
+          <option value="GIP">GIP</option>
+          <option value="GMD">GMD</option>
+          <option value="GNF">GNF</option>
+          <option value="GTQ">GTQ</option>
+          <option value="GYD">GYD</option>
           <option value="HKD">HKD</option>
+          <option value="HNL">HNL</option>
+          <option value="HRK">HRK</option>
+          <option value="HTG">HTG</option>
+          <option value="HUF">HUF</option>
           <option value="IDR">IDR</option>
           <option value="ILS">ILS</option>
+          <option value="IMP">IMP</option>
+          <option value="INR">INR</option>
+          <option value="IQD">IQD</option>
+          <option value="IRR">IRR</option>
+          <option value="ISK">ISK</option>
+          <option value="JEP">JEP</option>
+          <option value="JMD">JMD</option>
+          <option value="JOD">JOD</option>
+          <option value="JPY">JPY</option>
+          <option value="KES">KES</option>
+          <option value="KGS">KGS</option>
+          <option value="KHR">KHR</option>
+          <option value="KMF">KMF</option>
+          <option value="KPW">KPW</option>
           <option value="KRW">KRW</option>
+          <option value="KWD">KWD</option>
+          <option value="KYD">KYD</option>
+          <option value="KZT">KZT</option>
+          <option value="LAK">LAK</option>
+          <option value="LBP">LBP</option>
+          <option value="LKR">LKR</option>
+          <option value="LRD">LRD</option>
+          <option value="LSL">LSL</option>
+          <option value="LTL">LTL</option>
+          <option value="LVL">LVL</option>
+          <option value="LYD">LYD</option>
+          <option value="MAD">MAD</option>
+          <option value="MDL">MDL</option>
+          <option value="MGA">MGA</option>
+          <option value="MKD">MKD</option>
+          <option value="MMK">MMK</option>
+          <option value="MNT">MNT</option>
+          <option value="MOP">MOP</option>
+          <option value="MRU">MRU</option>
+          <option value="MUR">MUR</option>
+          <option value="MVR">MVR</option>
+          <option value="MWK">MWK</option>
           <option value="MXN">MXN</option>
           <option value="MYR">MYR</option>
+          <option value="MZN">MZN</option>
+          <option value="NAD">NAD</option>
+          <option value="NGN">NGN</option>
+          <option value="NIO">NIO</option>
+          <option value="NOK">NOK</option>
+          <option value="NPR">NPR</option>
           <option value="NZD">NZD</option>
+          <option value="OMR">OMR</option>
+          <option value="PAB">PAB</option>
+          <option value="PEN">PEN</option>
+          <option value="PGK">PGK</option>
           <option value="PHP">PHP</option>
+          <option value="PKR">PKR</option>
+          <option value="PLN">PLN</option>
+          <option value="PYG">PYG</option>
+          <option value="QAR">QAR</option>
+          <option value="RON">RON</option>
+          <option value="RSD">RSD</option>
+          <option value="RUB">RUB</option>
+          <option value="RWF">RWF</option>
+          <option value="SAR">SAR</option>
+          <option value="SBD">SBD</option>
+          <option value="SCR">SCR</option>
+          <option value="SDG">SDG</option>
+          <option value="SEK">SEK</option>
           <option value="SGD">SGD</option>
+          <option value="SHP">SHP</option>
+          <option value="SLE">SLE</option>
+          <option value="SLL">SLL</option>
+          <option value="SOS">SOS</option>
+          <option value="SRD">SRD</option>
+          <option value="STD">STD</option>
+          <option value="SVC">SVC</option>
+          <option value="SYP">SYP</option>
+          <option value="SZL">SZL</option>
           <option value="THB">THB</option>
+          <option value="TJS">TJS</option>
+          <option value="TMT">TMT</option>
+          <option value="TND">TND</option>
+          <option value="TOP">TOP</option>
+          <option value="TRY">TRY</option>
+          <option value="TTD">TTD</option>
+          <option value="TWD">TWD</option>
+          <option value="TZS">TZS</option>
+          <option value="UAH">UAH</option>
+          <option value="UGX">UGX</option>
+          <option value="USD">USD</option>
+          <option value="UYU">UYU</option>
+          <option value="UZS">UZS</option>
+          <option value="VEF">VEF</option>
+          <option value="VES">VES</option>
+          <option value="VND">VND</option>
+          <option value="VUV">VUV</option>
+          <option value="WST">WST</option>
+          <option value="XAF">XAF</option>
+          <option value="XAG">XAG</option>
+          <option value="XAU">XAU</option>
+          <option value="XCD">XCD</option>
+          <option value="XDR">XDR</option>
+          <option value="XOF">XOF</option>
+          <option value="XPF">XPF</option>
+          <option value="YER">YER</option>
           <option value="ZAR">ZAR</option>
-        </select>
+          <option value="ZMK">ZMK</option>
+          <option value="ZMW">ZMW</option>
+          <option value="ZWL">ZWL</option>
+      </select>      
       </div>
       <div>
         <label for="fromDate">From:</label>
@@ -258,40 +539,178 @@ body {
   <div class="currency-info">
     <h2>Currency Codes, Symbols, and Full Forms:</h2>
     <ul>
-      <li>USD - &#36; (Dollar) - United States Dollar</li>
+      <li>AED - &#1583;&#1614; (Dirham) - United Arab Emirates Dirham</li>
+      <li>AFN - &#1547; (Afghani) - Afghan Afghani</li>
+      <li>ALL - &#76; (Lek) - Albanian Lek</li>
+      <li>AMD - (Dram) - Armenian Dram</li>
+      <li>ANG - (Guilder) - Netherlands Antillean Guilder</li>
+      <li>AOA - (Kwanza) - Angolan Kwanza</li>
+      <li>ARS - &#36; (Peso) - Argentine Peso</li>
+      <li>AUD - &#36; (Dollar) - Australian Dollar</li>
+      <li>AWG - (Florin) - Aruban Florin</li>
+      <li>AZN - (Manat) - Azerbaijani Manat</li>
+      <li>BAM - (Convertible Mark) - Bosnia-Herzegovina Convertible Mark</li>
+      <li>BBD - &#36; (Dollar) - Barbadian Dollar</li>
+      <li>BDT - &#2547; (Taka) - Bangladeshi Taka</li>
+      <li>BGN - (Lev) - Bulgarian Lev</li>
+      <li>BHD - (Dinar) - Bahraini Dinar</li>
+      <li>BIF - (Franc) - Burundian Franc</li>
+      <li>BMD - &#36; (Dollar) - Bermudan Dollar</li>
+      <li>BND - &#36; (Dollar) - Brunei Dollar</li>
+      <li>BOB - (Boliviano) - Bolivian Boliviano</li>
+      <li>BRL - &#82;&#36; (Real) - Brazilian Real</li>
+      <li>BSD - &#36; (Dollar) - Bahamian Dollar</li>
+      <li>BTC - (Bitcoin) - Bitcoin</li>
+      <li>BTN - (Ngultrum) - Bhutanese Ngultrum</li>
+      <li>BWP - (Pula) - Botswanan Pula</li>
+      <li>BYN - (Rubles) - New Belarusian Ruble</li>
+      <li>BYR - (Rubles) - Belarusian Ruble</li>
+      <li>BZD - &#36; (Dollar) - Belize Dollar</li>
+      <li>CAD - &#36; (Dollar) - Canadian Dollar</li>
+      <li>CDF - (Franc) - Congolese Franc</li>
+      <li>CHF - (Franc) - Swiss Franc</li>
+      <li>CLF - (Unit of Account) - Chilean Unit of Account (UF)</li>
+      <li>CLP - (Peso) - Chilean Peso</li>
+      <li>CNH - (Yuan) - Chinese Yuan Offshore</li>
+      <li>CNY - &#165; (Yuan) - Chinese Yuan</li>
+      <li>COP - (Peso) - Colombian Peso</li>
+      <li>CRC - (Colón) - Costa Rican Colón</li>
+      <li>CUC - (Convertible Peso) - Cuban Convertible Peso</li>
+      <li>CUP - (Peso) - Cuban Peso</li>
+      <li>CVE - (Escudo) - Cape Verdean Escudo</li>
+      <li>CZK - (Koruna) - Czech Republic Koruna</li>
+      <li>DJF - (Franc) - Djiboutian Franc</li>
+      <li>DKK - (Krone) - Danish Krone</li>
+      <li>DOP - (Peso) - Dominican Peso</li>
+      <li>DZD - (Dinar) - Algerian Dinar</li>
+      <li>EGP - (Pound) - Egyptian Pound</li>
+      <li>ERN - (Nakfa) - Eritrean Nakfa</li>
+      <li>ETB - (Birr) - Ethiopian Birr</li>
       <li>EUR - &euro; (Euro) - Euro</li>
-      <li>JPY - &yen; (Yen) - Japanese Yen</li>
-      <li>BGN - (Bulgarian Lev) - Bulgarian Lev</li>
-      <li>CZK - (Czech Koruna) - Czech Koruna</li>
-      <li>DKK - (Danish Krone) - Danish Krone</li>
-      <li>GBP - &#163; (Pound Sterling) - Pound Sterling</li>
-      <li>HUF - (Hungarian Forint) - Hungarian Forint</li>
-      <li>PLN - (Polish Zloty) - Polish Zloty</li>
-      <li>RON - (Romanian Leu) - Romanian Leu</li>
-      <li>SEK - (Swedish Krona) - Swedish Krona</li>
-      <li>CHF - (Swiss Franc) - Swiss Franc</li>
-      <li>ISK - (Icelandic Krona) - Icelandic Krona</li>
-      <li>NOK - (Norwegian Krone) - Norwegian Krone</li>
-      <li>HRK - (Croatian Kuna) - Croatian Kuna</li>
-      <li>RUB - (Russian Ruble) - Russian Ruble</li>
-      <li>TRY - (Turkish Lira) - Turkish Lira</li>
-      <li>AUD - &#36; (Australian Dollar) - Australian Dollar</li>
-      <li>BRL - (Brazilian Real) - Brazilian Real</li>
-      <li>CAD - &#36; (Canadian Dollar) - Canadian Dollar</li>
-      <li>CNY - &#165; (Chinese Yuan) - Chinese Yuan</li>
-      <li>HKD - &#36; (Hong Kong Dollar) - Hong Kong Dollar</li>
-      <li>IDR - (Indonesian Rupiah) - Indonesian Rupiah</li>
-      <li>ILS - &#8362; (Israeli Shekel) - Israeli Shekel</li>
-      <li>INR - &#8377; (Indian Rupee) - Indian Rupee</li>
-      <li>KRW - &#8361; (South Korean Won) - South Korean Won</li>
-      <li>MXN - &#36; (Mexican Peso) - Mexican Peso</li>
-      <li>MYR - (Malaysian Ringgit) - Malaysian Ringgit</li>
-      <li>NZD - &#36; (New Zealand Dollar) - New Zealand Dollar</li>
-      <li>PHP - (Philippine Peso) - Philippine Peso</li>
-      <li>SGD - &#36; (Singapore Dollar) - Singapore Dollar</li>
-      <li>THB - &#3647; (Thai Baht) - Thai Baht</li>
-      <li>ZAR - (South African Rand) - South African Rand</li>
-    </ul>
+      <li>FJD - &#36; (Dollar) - Fijian Dollar</li>
+      <li>FKP - (Pound) - Falkland Islands Pound</li>
+      <li>GBP - &#163; (Pound Sterling) - British Pound Sterling</li>
+      <li>GEL - (Lari) - Georgian Lari</li>
+      <li>GGP - (Pound) - Guernsey Pound</li>
+      <li>GHS - (Cedi) - Ghanaian Cedi</li>
+      <li>GIP - (Pound) - Gibraltar Pound</li>
+      <li>GMD - (Dalasi) - Gambian Dalasi</li>
+      <li>GNF - (Franc) - Guinean Franc</li>
+      <li>GTQ - (Quetzal) - Guatemalan Quetzal</li>
+      <li>GYD - (Dollar) - Guyanaese Dollar</li>
+      <li>HKD - &#36; (Dollar) - Hong Kong Dollar</li>
+      <li>HNL - (Lempira) - Honduran Lempira</li>
+      <li>HRK - (Kuna) - Croatian Kuna</li>
+      <li>HTG - (Gourde) - Haitian Gourde</li>
+      <li>HUF - (Forint) - Hungarian Forint</li>
+      <li>IDR - (Rupiah) - Indonesian Rupiah</li>
+      <li>ILS - &#8362; (Sheqel) - Israeli New Sheqel</li>
+      <li>IMP - (Pound) - Manx Pound</li>
+      <li>INR - &#8377; (Rupee) - Indian Rupee</li>
+      <li>IQD - (Dinar) - Iraqi Dinar</li>
+      <li>IRR - (Rial) - Iranian Rial</li>
+      <li>ISK - (Króna) - Icelandic Króna</li>
+      <li>JEP - (Pound) - Jersey Pound</li>
+      <li>JMD - (Dollar) - Jamaican Dollar</li>
+      <li>JOD - (Dinar) - Jordanian Dinar</li>
+      <li>JPY - &#165; (Yen) - Japanese Yen</li>
+      <li>KES - (Shilling) - Kenyan Shilling</li>
+      <li>KGS - (Som) - Kyrgystani Som</li>
+      <li>KHR - (Riel) - Cambodian Riel</li>
+      <li>KMF - (Franc) - Comorian Franc</li>
+      <li>KPW - (Won) - North Korean Won</li>
+      <li>KRW - &#8361; (Won) - South Korean Won</li>
+      <li>KWD - (Dinar) - Kuwaiti Dinar</li>
+      <li>KYD - &#36; (Dollar) - Cayman Islands Dollar</li>
+      <li>KZT - (Tenge) - Kazakhstani Tenge</li>
+      <li>LAK - (Kip) - Laotian Kip</li>
+      <li>LBP - (Pound) - Lebanese Pound</li>
+      <li>LKR - (Rupee) - Sri Lankan Rupee</li>
+      <li>LRD - (Dollar) - Liberian Dollar</li>
+      <li>LSL - (Loti) - Lesotho Loti</li>
+      <li>LTL - (Litas) - Lithuanian Litas</li>
+      <li>LVL - (Lats) - Latvian Lats</li>
+      <li>LYD - (Dinar) - Libyan Dinar</li>
+      <li>MAD - (Dirham) - Moroccan Dirham</li>
+      <li>MDL - (Leu) - Moldovan Leu</li>
+      <li>MGA - (Ariary) - Malagasy Ariary</li>
+      <li>MKD - (Denar) - Macedonian Denar</li>
+      <li>MMK - (Kyat) - Myanma Kyat</li>
+      <li>MNT - (Tugrik) - Mongolian Tugrik</li>
+      <li>MOP - (Pataca) - Macanese Pataca</li>
+      <li>MRU - (Ouguiya) - Mauritanian Ouguiya</li>
+      <li>MUR - (Rupee) - Mauritian Rupee</li>
+      <li>MVR - (Rufiyaa) - Maldivian Rufiyaa</li>
+      <li>MWK - (Kwacha) - Malawian Kwacha</li>
+      <li>MXN - &#36; (Peso) - Mexican Peso</li>
+      <li>MYR - (Ringgit) - Malaysian Ringgit</li>
+      <li>MZN - (Metical) - Mozambican Metical</li>
+      <li>NAD - (Dollar) - Namibian Dollar</li>
+      <li>NGN - (Naira) - Nigerian Naira</li>
+      <li>NIO - (Córdoba) - Nicaraguan Córdoba</li>
+      <li>NOK - (Krone) - Norwegian Krone</li>
+      <li>NPR - (Rupee) - Nepalese Rupee</li>
+      <li>NZD - (Dollar) - New Zealand Dollar</li>
+      <li>OMR - (Rial) - Omani Rial</li>
+      <li>PAB - (Balboa) - Panamanian Balboa</li>
+      <li>PEN - (Nuevo Sol) - Peruvian Nuevo Sol</li>
+      <li>PGK - (Kina) - Papua New Guinean Kina</li>
+      <li>PHP - (Peso) - Philippine Peso</li>
+      <li>PKR - (Rupee) - Pakistani Rupee</li>
+      <li>PLN - (Zloty) - Polish Zloty</li>
+      <li>PYG - (Guarani) - Paraguayan Guarani</li>
+      <li>QAR - (Rial) - Qatari Rial</li>
+      <li>RON - (Leu) - Romanian Leu</li>
+      <li>RSD - (Dinar) - Serbian Dinar</li>
+      <li>RUB - (Ruble) - Russian Ruble</li>
+      <li>RWF - (Franc) - Rwandan Franc</li>
+      <li>SAR - (Riyal) - Saudi Riyal</li>
+      <li>SBD - (Dollar) - Solomon Islands Dollar</li>
+      <li>SCR - (Rupee) - Seychellois Rupee</li>
+      <li>SDG - (Pound) - South Sudanese Pound</li>
+      <li>SEK - (Krona) - Swedish Krona</li>
+      <li>SGD - (Dollar) - Singapore Dollar</li>
+      <li>SHP - (Pound) - Saint Helena Pound</li>
+      <li>SLE - (Leone) - Sierra Leonean Leone</li>
+      <li>SLL - (Leone) - Sierra Leonean Leone</li>
+      <li>SOS - (Shilling) - Somali Shilling</li>
+      <li>SRD - (Dollar) - Surinamese Dollar</li>
+      <li>STD - (Dobra) - São Tomé and Príncipe Dobra</li>
+      <li>SVC - (Colón) - Salvadoran Colón</li>
+      <li>SYP - (Pound) - Syrian Pound</li>
+      <li>SZL - (Lilangeni) - Swazi Lilangeni</li>
+      <li>THB - (Baht) - Thai Baht</li>
+      <li>TJS - (Somoni) - Tajikistani Somoni</li>
+      <li>TMT - (Manat) - Turkmenistani Manat</li>
+      <li>TND - (Dinar) - Tunisian Dinar</li>
+      <li>TOP - (Paʻanga) - Tongan Paʻanga</li>
+      <li>TRY - (Lira) - Turkish Lira</li>
+      <li>TTD - (Dollar) - Trinidad and Tobago Dollar</li>
+      <li>TWD - (Dollar) - New Taiwan Dollar</li>
+      <li>TZS - (Shilling) - Tanzanian Shilling</li>
+      <li>UAH - (Hryvnia) - Ukrainian Hryvnia</li>
+      <li>UGX - (Shilling) - Ugandan Shilling</li>
+      <li>USD - &#36; (Dollar) - United States Dollar</li>
+      <li>UYU - (Peso) - Uruguayan Peso</li>
+      <li>UZS - (Som) - Uzbekistan Som</li>
+      <li>VEF - (Bolívar Fuerte) - Venezuelan Bolivar Fuerte</li>
+      <li>VES - (Bolívar) - Sovereign Bolivar</li>
+      <li>VND - (Dong) - Vietnamese Dong</li>
+      <li>VUV - (Vatu) - Vanuatu Vatu</li>
+      <li>WST - (Tala) - Samoan Tala</li>
+      <li>XAF - (Franc) - CFA Franc BEAC</li>
+      <li>XAG - (Silver) - Silver (troy ounce)</li>
+      <li>XAU - (Gold) - Gold (troy ounce)</li>
+      <li>XCD - (Dollar) - East Caribbean Dollar</li>
+      <li>XDR - (Rights) - Special Drawing Rights</li>
+      <li>XOF - (Franc) - CFA Franc BCEAO</li>
+      <li>XPF - (Franc) - CFP Franc</li>
+      <li>YER - (Rial) - Yemeni Rial</li>
+      <li>ZAR - (Rand) - South African Rand</li>
+      <li>ZMK - (Kwacha) - Zambian Kwacha (pre-2013)</li>
+      <li>ZMW - (Kwacha) - Zambian Kwacha</li>
+      <li>ZWL - (Dollar) - Zimbabwean Dollar</li>
+  </ul>
   </div>
   <footer>
     Contact Us:
@@ -309,6 +728,9 @@ body {
   yesterday.setDate(today.getDate()-1);
 
   var formattedYesterday=yesterday.toISOString().split('T')[0];
+
+  document.getElementById('fromDate').value = formattedYesterday;
+  document.getElementById('toDate').value = formattedYesterday;
 
   document.getElementById('fromDate').max =formattedYesterday;
   document.getElementById('toDate').max =formattedYesterday;
